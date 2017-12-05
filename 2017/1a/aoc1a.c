@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 /*
@@ -14,31 +15,22 @@ int main(int argc, char **argv)
 	int i;
 	int sum;
 	int input_size;
+	char elem[2];
 
 	sum = 0;
 	input_size = sizeof(input);
 
-	printf("input_size is %d\n", input_size);
+	char input_array[input_size - 1];
+	if (!memcpy(input_array, input, input_size - 1));
 
-	for (i = 0; i < input_size; ++i) {
-		int next = (i + 1) % input_size;
-		printf("next is %d\n", next);
-		printf("%c - %c\n", input[i], input[next]);
+	for (i = 0; i < input_size - 1; ++i) {
+		int next = (i + 1) % (input_size - 1);
 
-		if (input[i] == '\0')
-			printf("NULL CHAR\n");
-
-		if (input[i] == input[next]) {
-			printf("%c - %c\n", input[i], input[next]);
-
-			char elem[2];
-			elem[0] = input[i];
+		if (input_array[i] == input_array[next]) {
+			elem[0] = input_array[i];
 			elem[1] = '\0';
 
-			// printf("input at %d is %d\n", i, atoi(elem));
-			// printf("next is %d\n", next);
 			sum += atoi(elem);
-			// printf("sum at %d is %d\n", i, sum);
 		}
 	}
 
