@@ -3,3 +3,24 @@
 # http://adventofcode.com/
 # script that can be used to initialize the code for a new problem
 
+if [ -n "$1" ]; then
+	CMD="$1"
+fi
+
+case $CMD in
+	"add")
+		read -p "insert problem identifier: " NUM
+		read -p "insert sub-problem identifier: " SUBINDEX
+		;;
+esac
+
+if [ -z "$NUM" ]; then
+	echo "problem identifier missing"
+	exit 1;
+fi
+if [ -z "$SUBINDEX" ]; then
+	echo "sub-problem identifier missing"
+	exit 1;
+fi
+
+mkdir $NUM$SUBINDEX
