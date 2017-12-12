@@ -23,4 +23,4 @@ if [ -z "$SUBINDEX" ]; then
 	exit 1;
 fi
 
-mkdir $NUM$SUBINDEX
+mkdir problems/$NUM$SUBINDEX
