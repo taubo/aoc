@@ -73,7 +73,7 @@ function validateEcl(value) {
 }
 
 function validatePid(value) {
-    re = new RegExp("[0-9]{9}");
+    re = new RegExp("^[0-9]{9}$");
 
     if (value.match(re)) {
         return { 'val': value, 'valid': true };
@@ -90,6 +90,7 @@ const mappal = {
     'hcl': (value) => validateHcl(value),
     'ecl': (value) => validateEcl(value),
     'pid': (value) => validatePid(value),
+    'cid': (value) => { return { 'val': value, 'valid': true }; },
 }
 
 class Parser {
@@ -156,7 +157,7 @@ const probB = function() {
             let blah = {};
             for (const prop of expectedFields) {
                 let val = passport[prop];
-                if (prop != 'cid' && val != undefined) {
+                if (val != undefined) {
                     blah = mappal[prop](val);
                     // console.log(prop);
                     // console.log(blah);
@@ -170,8 +171,8 @@ const probB = function() {
                 }
             }
 
-            console.log("valid: " + !invalidEntry);
-            console.log(passport);
+            // console.log("valid: " + !invalidEntry);
+            // console.log(passport);
             if (!invalidEntry) {
                 validPassportsCount++;
             }
