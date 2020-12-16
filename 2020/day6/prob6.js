@@ -40,7 +40,6 @@ function onParserEvent(event) {
             answersSets.push(set);
             break;
         case 'answers':
-            console.log(event.input);
             for (const c of event.input) {
                 answersSets[answersSets.length - 1].add(c);
             }
@@ -65,7 +64,7 @@ function onParserEventPartB(event) {
 
 function probA() {
     let sum = 0;
-    parser = new Parser(onParserEvent);
+    let parser = new Parser(onParserEvent);
 
     readInterface.on('line', (line) => parser.parse(line));
     readInterface.on('close', () => {
@@ -78,7 +77,7 @@ function probA() {
 
 function probB() {
     let sum = 0;
-    parser = new Parser(onParserEventPartB);
+    let parser = new Parser(onParserEventPartB);
 
     let ansMap = new Map();
 
