@@ -1,4 +1,3 @@
-const { PRIORITY_ABOVE_NORMAL } = require('constants');
 const fs = require('fs');
 const readline = require('readline');
 

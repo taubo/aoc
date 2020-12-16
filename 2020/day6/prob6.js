@@ -40,6 +40,7 @@ function onParserEvent(event) {
             answersSets.push(set);
             break;
         case 'answers':
+            console.log(event.input);
             for (const c of event.input) {
                 answersSets[answersSets.length - 1].add(c);
             }
@@ -48,8 +49,6 @@ function onParserEvent(event) {
 }
 
 let ansB = []; 
-let ansSetB = new Set();
-
 let B = [];
 
 function onParserEventPartB(event) {
@@ -73,7 +72,7 @@ function probA() {
         for (const elem of answersSets) {
             sum += elem.size;
         }
-        console.log("solution: " + sum);
+        console.log("solution A: " + sum);
     });
 }
 
@@ -81,11 +80,31 @@ function probB() {
     let sum = 0;
     parser = new Parser(onParserEventPartB);
 
+    let ansMap = new Map();
+
     readInterfaceB.on('line', (line) => parser.parse(line));
     readInterfaceB.on('close', () => {
         for (elem of B) {
+            // console.log(elem);
+            let i = 0;
+            for (string of elem.answers) {
+                [...string].map((el) => {
+                    let count = ansMap.get(el);
+                    if (count != undefined)
+                        ansMap.set(el, count + 1);
+                    else
+                        ansMap.set(el, 1);
+                });
+                for (m of ansMap.values()) {
+                    if (m == elem.size) {
+                        sum++;
+                    }
+                }
+            }
+            ansMap.clear();
         }
-    });
+        console.log("solution B: " + sum);
+})
 }
 
 probA();
