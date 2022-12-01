@@ -1,0 +1,7 @@
+#!/bin/bash
+
+prob_number=${1}
+problem_directory=day${prob_number}
+
+mkdir -p ${problem_directory}
+
