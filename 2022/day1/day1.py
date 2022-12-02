@@ -14,18 +14,25 @@ def parse(filename):
 
     return elfs
 
+def prob1(calories_sum):
+    max_calories=calories_sum[0]
+    prob1_solution=max_calories
+    print(f"{prob1_solution=}")
+
+def prob2(calories_sum):
+    prob2_solution=sum(calories_sum[0:3])
+    print(f"{prob2_solution=}")
+
 def main():
     elfs = parse('/mnt/d/devel/aoc/2022/day1/input')
-    max_calories = 0
-    elf_with_max_calories = 0
+
+    calories_sum = []
     for elf_index, elem in enumerate(elfs):
-        calories_sum = sum(elem)
-        if calories_sum >= max_calories:
-            max_calories = calories_sum
-            elf_with_max_calories = elf_index
+        calories_sum.append(sum(elem))
+    calories_sum.sort(reverse=True)
 
-    print(f"{max_calories=} -- {elf_with_max_calories=}")
-
+    prob1(calories_sum)
+    prob2(calories_sum)
 
 if __name__ == "__main__":
     main()
