@@ -2,8 +2,8 @@ class Aoc():
     pass
 
 def parse(filename):
-    elfs = []
     with open(filename, 'r') as f:
+        elfs = []
         calories_list = []
         for line in f:
             if (line.isspace()):

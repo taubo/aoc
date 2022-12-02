@@ -5,3 +5,4 @@ problem_directory=day${prob_number}
 
 mkdir -p ${problem_directory}
 touch ${problem_directory}/day${prob_number}.py
+curl 'https://adventofcode.com/2022/day/'${prob_number}'/input' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' -H 'Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3' -H 'Accept-Encoding: gzip, deflate, br' -H 'Referer: https://adventofcode.com/2022/day/2' -H 'Connection: keep-alive' -H 'Cookie: _ga=GA1.2.1103413074.1669883279; _gid=GA1.2.1428002016.1669883279; session=53616c7465645f5fc3d0c81cc7c56644feb2d0f82210ff7600dbe6cf83f09496695b94211fc19489bf9c27a08d48141bcdcfb0e2b8b81477f02c527d86757c7a' -H 'Upgrade-Insecure-Requests: 1' -H 'Sec-Fetch-Dest: document' -H 'Sec-Fetch-Mode: navigate' -H 'Sec-Fetch-Site: same-origin' -H 'Sec-Fetch-User: ?1' --output ${problem_directory}/input
