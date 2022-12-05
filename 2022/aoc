@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+error() {
+    echo Error ${1}
+}
+
+if [[ -z ${1} || -z ${2} ]]; then
+    error
+    exit 1
+fi
+
+cmd=${1}
+prob_num=${2}
+
+case ${cmd} in
+    "run")
+        python3 day${prob_num}/day${prob_num}.py
+        ;;
+    "new")
+        ./new_prob ${prob_num}
+        ;;
+esac
