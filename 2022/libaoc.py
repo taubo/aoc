@@ -14,3 +14,6 @@ def parse_input(filename, parser=None):
     with open(filename) as f:
         for line in f:
             parser.parse(line)
+
+def parse_input_day(day_number, parser):
+    parse_input(get_input_file(day_number), parser)
