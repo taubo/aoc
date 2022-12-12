@@ -10,7 +10,18 @@ def print_solution(day_number, prob_number, solution):
 def get_input_file(day_number):
     return "day" + str(day_number) + "/input"
 
-def parse_input(filename, parser=None):
+
+class DefaultParser():
+    def __init__(self):
+        self.lines = []
+
+    def get_data(self):
+        return self.lines
+
+    def parse(self, line):
+        self.lines.append(line)
+
+def parse_input(filename, parser):
     with open(filename) as f:
         for line in f:
             parser.parse(line)
